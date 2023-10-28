@@ -1,0 +1,56 @@
+<h1>list of published books</h1>
+
+published books:{{numofpublishedbooks}} <br>
+unpublished books:{{numunpublishedbooks}}  <br> 
+
+<br>
+{% if book|length >0%}
+<table border="3">
+    <tr>
+        <td>ref</td>
+        <td>title</td>
+        <td>category</td>
+        <td>publication date</td>
+        <td>published</td>
+        <td>Author</td>
+
+        
+        <td>Action</td>
+        <td>Delete</td>
+        <td>Detail</td>
+
+
+    </tr>
+    {% for a in book %}
+    <tr>
+        <td>{{a.ref}}</td>
+        <td>{{a.title}}</td>
+        <td>{{a.category}}</td>
+
+        <td>{{a.publicationDate|date()}}</td>
+    
+
+    
+        <td>
+            {% if a.published %}
+            {{a.published}}
+            {%else%}
+            0
+            {%endif%}
+        </td>
+
+        <td>{{a.Author}}</td>
+            
+        <td><a href="{{path('editformBook',{'ref':a.ref})}}">edit</td>
+            <td><a href="{{path('removebook',{'ref':a.ref})}}">delete</td>
+                <td> <a href="{{path('showbyrefbook',{'ref':a.ref})}}">show</a></td>
+    </tr>
+    {%endfor%}
+
+</table>
+{% else %}
+table of published books is empty<br>
+	{% endif%}
+
+<br>
+<a href="{{path('addformBook')}}"><button>create new</button></a>

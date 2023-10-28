@@ -1,0 +1,10 @@
+<h1>Book</h1>
+Title of Book :{{ b.title }} <br>
+reference :{{ b.ref}} <br>
+category:{{ b.category }} <br>
+
+Publication date : {{ b.publicationDate | date('Y-m-d') }}<br>
+Author : {{ b.author.username }} <br>
+number of books of the author:{{ b.author.nbBooks }} <br>
+
+<a href="{{path('showBookp')}}">back to edit list</a>

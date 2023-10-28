@@ -1,0 +1,42 @@
+{{form_start(f)}}
+{{form_label(f.ref)}}
+{{form_widget(f.ref)}}
+
+{{form_end(f)}}
+<h1>list of books</h1>
+
+<table border="3">
+    <tr>
+        <td>ref</td>
+        <td>title</td>
+        <td>category</td>
+        <td>publication date</td>
+        <td>published</td>
+        <td>Author</td>
+        <td>nbrbooks</td>
+        
+        <td>Action</td>
+        <td>Delete</td>
+
+
+    </tr>
+    {% for a in book %}
+    <tr>
+        <td>{{a.ref}}</td>
+        <td>{{a.title}}</td>
+        <td>{{a.category}}</td>
+        <td>{{a.publicationDate|date()}}</td>
+        <td>{{a.published}}</td>
+        <td>{{a.Author}}</td>
+        <td>{{a.Author.nbBooks}}</td>
+
+        <td><a href="{{path('editformBook',{'ref':a.ref})}}">edit</td>
+        <td><a href="{{path('removebook',{'ref':a.ref})}}">delete</td>
+        <td><a href="{{path('showrefbook',{'ref':a.ref})}}">show</td>
+
+    </tr>
+    {%endfor%}
+</table>
+	
+	
+	

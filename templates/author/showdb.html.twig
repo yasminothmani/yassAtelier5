@@ -1,0 +1,47 @@
+<!--make the table beautiful like me -->
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse ;
+        padding: 10px;
+        text-align: center;
+    }
+    table{
+        margin: auto;
+    }
+    th{
+        background-color: #4CAF50;
+        color: white;
+    }
+    td{
+        background-color: #f2f2f2;
+    }
+   
+ 
+</style>
+
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>nb_books</td>
+        <td>action</td>
+        <td>delete</td>
+      
+    </tr>
+    {% for i in author %}
+    <tr>
+        
+        <td>{{i.id}}</td>
+        <td>{{i.username}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.nbBooks}}</td>
+        <td> <a href="{{path('editauthor',{'id':i.id})}}">edit</td>
+        <td> <a href="{{path('app_deleteauthor',{'id':i.id})}}">delete</td>
+      
+    </tr>
+
+    {% endfor %}
+</table>
